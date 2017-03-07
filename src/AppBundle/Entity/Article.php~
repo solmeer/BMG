@@ -37,7 +37,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="article")
-     * @ORM\JoinColumn(name="author_id",referencedColumnName="id")
+     * @ORM\JoinColumn(name="article_id",referencedColumnName="id")
      */
     private $author;
 
@@ -45,7 +45,7 @@ class Article
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category" ,inversedBy="articles")
-     * @ORM\JoinColumn(name="category_id",referencedColumnName="id")
+     * @ORM\JoinColumn(name="article_id",referencedColumnName="id")
      */
     private $category;
 

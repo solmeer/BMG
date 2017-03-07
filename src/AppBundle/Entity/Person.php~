@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * Person
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Table(name="person")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonRepository")
  */
-class Category
+class Person
 {
     /**
      * @var int
@@ -24,14 +24,33 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=50)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="category")
+     * @var string
+     *
+     * @ORM\Column(name="info", type="text")
+     */
+    private $info;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="text")
+     */
+    private $photo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="author")
      */
     private $articles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="author")
+     */
+    private $images;
 
 
     /**
@@ -49,7 +68,7 @@ class Category
      *
      * @param string $name
      *
-     * @return Category
+     * @return Person
      */
     public function setName($name)
     {
@@ -67,6 +86,54 @@ class Category
     {
         return $this->name;
     }
+
+    /**
+     * Set info
+     *
+     * @param string $info
+     *
+     * @return Person
+     */
+    public function setInfo($info)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info
+     *
+     * @return string
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Person
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
     /**
      * Constructor
      */
@@ -80,7 +147,7 @@ class Category
      *
      * @param \AppBundle\Entity\Article $article
      *
-     * @return Category
+     * @return Person
      */
     public function addArticle(\AppBundle\Entity\Article $article)
     {
