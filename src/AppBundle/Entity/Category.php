@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Category
@@ -38,6 +39,7 @@ class Category
      * Get id
      *
      * @return int
+     * @Groups({"group1"})
      */
     public function getId()
     {
@@ -62,6 +64,7 @@ class Category
      * Get name
      *
      * @return string
+     * @Groups({"group1"})
      */
     public function getName()
     {

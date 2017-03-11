@@ -32,6 +32,24 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
         $manager->persist($article);
 
+        $article1 = new Article();
+        $article1->setTitle('SomeTitle');
+        $content = file_get_contents('http://loripsum.net/api/3/plaintext');
+        $article1->setText($content);
+        $article1->setAuthor($author);
+        $article1->setCategory($category);
+
+        $manager->persist($article1);
+
+        $article2 = new Article();
+        $article2->setTitle('SomeTitle');
+        $content = file_get_contents('http://loripsum.net/api/3/plaintext');
+        $article2->setText($content);
+        $article2->setAuthor($author);
+        $article2->setCategory($category);
+
+        $manager->persist($article2);
+
         $manager->flush();
 
     }

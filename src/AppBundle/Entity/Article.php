@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Article
@@ -18,6 +19,7 @@ class Article
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"group1"})
      */
     private $id;
 
@@ -25,6 +27,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=150)
+     * @Groups({"group1"})
      */
     private $title;
 
@@ -32,6 +35,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="text", type="text")
+     * @Groups({"group1"})
      */
     private $text;
 
