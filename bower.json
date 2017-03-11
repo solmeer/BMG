@@ -1,0 +1,17 @@
+{
+  "name": "bmg",
+  "description": "GeekHub project",
+  "main": "index.js",
+  "authors": [
+    "Eughene Rymar <eughene87@ukr.net>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
