@@ -33,9 +33,15 @@ class ArticleController extends Controller
         $serializer = new Serializer([$normalizer]);
 
         $articles = $serializer->normalize($articles, null, array('groups' => array('group1')));
-        $articles = json_encode($articles);
+        $decodearticles = [];
+        foreach ($articles as $article) {
+                    $file = file_get_contents($this->get('kernel')->getRootDir() . "/../web/uploads/images/articles/" . $article['image']);
+                    $article['image'] = base64_encode($file);
 
-        $response = new Response($articles);
+            $decodearticles[] = $article;
+        }
+
+        $response = new Response(json_encode($decodearticles));
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
 

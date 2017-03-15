@@ -4,12 +4,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Article
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @Vich\Uploadable()
  */
 class Article
 {
@@ -38,6 +41,19 @@ class Article
      * @Groups({"group1"})
      */
     private $text;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"group1"})
+     */
+    private $image;
+
+    /**
+    * @Vich\UploadableField(mapping="articles_images", fileNameProperty="image")
+    * @var File
+    */
+    private $imageFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="article")
@@ -162,5 +178,39 @@ class Article
 
     public function __toString() {
         return $this->title;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }

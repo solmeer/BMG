@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -24,14 +25,9 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="image_url", type="text")
-     */
-    private $imageUrl;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="type", type="string", length=50)
+     *
+     * @Assert\File(mimeTypes={ "application/pdf" })
      */
     private $type;
 
@@ -57,30 +53,6 @@ class Image
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set imageUrl
-     *
-     * @param string $imageUrl
-     *
-     * @return Image
-     */
-    public function setImageUrl($imageUrl)
-    {
-        $this->imageUrl = $imageUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get imageUrl
-     *
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->imageUrl;
     }
 
     /**

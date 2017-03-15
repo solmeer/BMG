@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.articles_images: /uploads/images/articles
 
 framework:
     #esi:             ~
@@ -72,7 +73,38 @@ swiftmailer:
     spool:     { type: memory }
 
 easy_admin:
+    design:
+      form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig']
+
     entities:
-        - AppBundle\Entity\Article
-        - AppBundle\Entity\Person
-        - AppBundle\Entity\Image
+        Article:
+            class: AppBundle\Entity\Article
+            list:
+              fields:
+                    - id
+                    - { property: 'title', type: 'text' }
+                    - { property: 'text', type: 'text' }
+                    - { property: 'author'}
+                    - { property: 'category'}
+                    - { property: 'image', type: 'image', base_path: %app.path.articles_images% }
+            show:
+              fields:
+                    - { property: 'image', type: 'image', base_path: %app.path.articles_images% }
+            form:
+              fields:
+                  - { property: 'title', type: 'text' }
+                  - { property: 'text', type: 'textarea' }
+                  - { property: 'author'}
+                  - { property: 'category'}
+                  - { property: 'imageFile', type: 'vich_file' }
+        Person:
+            class: AppBundle\Entity\Person
+        Image:
+            class: AppBundle\Entity\Image
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+            articles_images:
+                uri_prefix:         "%app.path.articles_images%"
+                upload_destination: "%kernel.root_dir%/../web/uploads/images/articles"
