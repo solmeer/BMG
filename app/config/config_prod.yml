@@ -1,6 +1,6 @@
 imports:
     - { resource: config.yml }
-    - { resource: heroku_parameters.yml }
+    - { resource: heroku_parameters.php }
 
 #doctrine:
 #    orm:
