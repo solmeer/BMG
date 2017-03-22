@@ -22,7 +22,7 @@ config(['$routeProvider', function ($routeProvider) {
     );
 }]);
 
-app.controller("getNews", function ($scope, $http) {
+app.controller("articleController", function ($scope, $http) {
     $http.get("/api/articles/")
         .then(function(response){
             $scope.newsArray = response.data;
