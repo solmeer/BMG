@@ -1,0 +1,144 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Black Mark Gang Tattoo</title>
+
+    <link href="css/creative.css" rel="stylesheet">
+
+    <script src="js/slider.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#page-top">
+                    BMGT
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="page-scroll" href="#">Студия</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="about.html">Портфолио</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="">О нас</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-controller="CarouselDemoCtrl" style="height: 100%; position: relative">
+        <div>
+            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                    <img ng-src="{{slide.image}}" style="width: 100vw;height: 100vh ;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-dark row about-content">
+        <div class="container text-center col-lg-6 aboutContentText">
+            Татуировки - это наш конек! Black Mark Gang Tattoo - это развивающийся, комфортабельный тату салон в Черкассах. Главной целью салона является предоставление высококлассного, квалифицированного обслуживания в уютной и доброжелательной атмосфере салона. Мы перевернём ваше представление о татуировках, воплотив ваши идеи и мечты в реальность - новое украшение никогда вам не надоест.
+        </div>
+    </div>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="about.html" class="portfolio-box">
+                        <img src="img/news.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                    Новости
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                        <img src="img/sale.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+
+                                <div class="project-name">
+                                    Акции
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-dark insert">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h1>Портфолио</h1>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact">
+        <div class="container">
+            <hr>
+            <div class="row">
+
+                <div class="col-lg-2">
+                    <p>
+                        (063)040-06-87
+                        <br>
+                        (063)153-25-98
+                    </p>
+                </div>
+
+                <div class="col-lg-3 ">
+                    <img src="img/ico/youtube.png" height="24" width="24"/>
+                    <img src="img/ico/rus-vk-01.png" height="24" width="24"/>
+                    <img src="img/ico/instagram.png" height="24" width="24"/>
+                    <img src="img/ico/facebook.png" height="24" width="24"/>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
