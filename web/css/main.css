@@ -1,0 +1,16 @@
+.about-content{
+    margin: 0;
+}
+.aboutContentText{
+
+    height: auto;
+    margin-left: 3%;
+
+    margin-top: 3%;
+    font-family: "Comic Sans MS";
+    font-size: 24px;
+    color: white;
+    text-align: justify;
+    padding-bottom: 25%;
+
+}
