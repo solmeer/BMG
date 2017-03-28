@@ -1,4 +1,24 @@
-var app = angular.module("app",[]);
+var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+
+app.controller('CarouselDemoCtrl', function ($scope) {
+    $scope.myInterval = 5000;
+    $scope.noWrapSlides = false;
+    $scope.active = 0;
+    var slides = $scope.slides = [];
+    var currIndex = 0;
+
+    $scope.addSlide = function() {
+        slides.push({
+            image: 'img/header' + i + '.jpg',
+            id: currIndex++
+        });
+    };
+
+    for (var i = 1; i < 4; i++) {
+        $scope.addSlide();
+    }
+
+});
 
 app.controller("getNews", function ($scope, $http) {
     $http.get("http://bmgt.herokuapp.com/api/articles/")
@@ -7,4 +27,21 @@ app.controller("getNews", function ($scope, $http) {
 
 
         });
+
+
 });
+
+app.controller("portfolioCtrl", function ($scope,$http) {
+    $http.get("http://bmgt.herokuapp.com/api/articles/")
+        .then(function(response){
+            $scope.newsArray = response.data;
+
+
+        });
+
+    $scope.ngPortfolio = {
+        "background-color" : "black",
+        "height":"auto"
+    };
+});
+

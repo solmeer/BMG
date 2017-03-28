@@ -1,43 +1,13 @@
-@font-face {
-  font-family: Bolero; /* Имя шрифта */
-  src: url("fonts/aassuan.ttf"); /* Путь к файлу со шрифтом */
-}
+
+
+
 
 html,
 body {
   height: 100%;
   width: 100%;
-}
-
-body {
-  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
-}
-
-a {
-  -webkit-transition: all 0.35s;
-  -moz-transition: all 0.35s;
-  transition: all 0.35s;
-  color: #F05F40;
-}
-
-a:hover,
-a:focus {
-  color: #eb3812;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .bg-primary {
@@ -49,9 +19,11 @@ p {
   color: white;
 }
 
-.text-faded {
-  color: rgba(255, 255, 255, 0.7);
-}
+
+
+
+
+
 
 section {
   padding: 100px 0;
@@ -157,41 +129,7 @@ aside {
     color: #F05F40;
   }
 }
-/*header {*/
-  /*position: relative;*/
-  /*width: 100%;*/
-  /*min-height: auto;*/
-  /*-webkit-background-size: cover;*/
-  /*-moz-background-size: cover;*/
-  /*background-size: cover;*/
-  /*-o-background-size: cover;*/
-  /*background-position: center;*/
-  /*!*background-image: url('../img/header1.jpg');*!*/
-  /*text-align: center;*/
-  /*color: white;*/
-/*}*/
-/*header .header-content {*/
-  /*position: relative;*/
-  /*text-align: center;*/
-  /*padding: 100px 15px 100px;*/
-  /*width: 100%;*/
-/*}*/
-/*header .header-content .header-content-inner h1 {*/
-  /*font-weight: 700;*/
-  /*text-transform: uppercase;*/
-  /*margin-top: 0;*/
-  /*margin-bottom: 0;*/
-  /*font-size: 30px;*/
-/*}*/
-/*header .header-content .header-content-inner hr {*/
-  /*margin: 30px auto;*/
-/*}*/
-/*header .header-content .header-content-inner p {*/
-  /*font-weight: 300;*/
-  /*color: rgba(255, 255, 255, 0.7);*/
-  /*font-size: 16px;*/
-  /*margin-bottom: 50px;*/
-/*}*/
+
 @media (min-width: 768px) {
   header {
     min-height: 100%;
