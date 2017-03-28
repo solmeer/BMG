@@ -1,5 +1,5 @@
-angular.module('ui.bootstrap.demo', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
-angular.module('ui.bootstrap.demo').controller('CarouselDemoCtrl', function ($scope) {
+angular.module('app1', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+angular.module('app1').controller('CarouselDemoCtrl', function ($scope) {
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
