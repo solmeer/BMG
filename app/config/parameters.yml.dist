@@ -17,3 +17,9 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+
+    aws_region: us-west-2
+    aws_key: ~
+    aws_secret_key: ~
+    aws_version: ~

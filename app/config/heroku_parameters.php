@@ -13,3 +13,6 @@
     $container->setParameter('mailer_host', null);
     $container->setParameter('mailer_user', null);
     $container->setParameter('mailer_password', null);
+    $container->setParameter('aws_region', getenv('AWS_REGION'));
+    $container->setParameter('aws_key', getenv('AWS_ACCESS_KEY_ID'));
+    $container->setParameter('aws_secret_key', getenv('AWS_SECRET_ACCESS_KEY'));

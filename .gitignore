@@ -1,5 +1,4 @@
 /app/config/parameters.yml
-/app/config/heroku_parameters.php
 /build/
 /phpunit.xml
 /var/*
