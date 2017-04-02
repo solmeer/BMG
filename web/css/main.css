@@ -1,16 +1,38 @@
-.about-content{
-    margin: 0;
+@font-face {
+    font-family: Cleo; /* Имя шрифта */
+    src: url("../fonts/Cleopatra.ttf"); /* Путь к файлу со шрифтом */
 }
+
 .aboutContentText{
 
-    height: auto;
-    margin-left: 3%;
-
-    margin-top: 3%;
-    font-family: "Comic Sans MS";
-    font-size: 24px;
+    font-family: Cleo;
+    font-size: 34px;
     color: white;
-    text-align: justify;
-    padding-bottom: 25%;
+    margin-top: 9vh;
+    margin-bottom: 9vh;
 
+
+
+}
+
+#contact{
+    padding: 0;
+}
+
+@media screen and (max-height: 600px){
+    .aboutContentText {
+        font-size: 15px;
+    }
+}
+
+
+
+.portfolioImg{
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.footer-img img:hover{
+
+    cursor: pointer;
 }

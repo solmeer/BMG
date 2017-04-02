@@ -1,3 +1,25 @@
-#post{
+@font-face {
+    font-family: Cleo; /* Имя шрифта */
+    src: url("fonts/Cleopatra.ttf"); /* Путь к файлу со шрифтом */
+}
 
+
+.contents{
+    padding-top: 100px;
+    background-color: #222222;
+
+}
+
+.contents h1{
+    font-family: Cleo;
+    padding-top: 0;
+    margin-top: 0;
+    color: white;
+    padding-bottom: 40px;
+}
+
+.aboutText{
+    color: white;
+    font-family: Cleo;
+    font-size: 24px;
 }

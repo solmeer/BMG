@@ -1,144 +1,81 @@
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <title>Black Mark Gang Tattoo</title>
-
-    <link href="css/creative.css" rel="stylesheet">
-
-    <script src="js/slider.js"></script>
-    <link rel="stylesheet" href="css/main.css">
-
-
-</head>
-
-<body id="page-top">
-
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#page-top">
-                    BMGT
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navigation">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="page-scroll" href="#">Студия</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="about.html">Портфолио</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="">О нас</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="">Контакты</a>
-                    </li>
-                </ul>
-            </div>
+    <link href="../css/creative.css" rel="stylesheet"/>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script src="../js/slider.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <script src="../js/app.js"></script>
+    <link rel="stylesheet" href="../css/about.css"/>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="#!/">BMGT</a></div>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="nav navbar-nav">
+            <li><a class="page-scroll" href="#">Студия</a></li>
+            <li><a class="page-scroll" href="about.html">Портфолио</a></li>
+            <li><a class="page-scroll" href="http://bmgt.herokuapp.com/#!/article">Новости</a></li>
+            <li><a class="page-scroll" href="">Акции</a></li>
+            <li><a class="page-scroll" href="#!/about">О нас</a></li>
+          </ul>
         </div>
+      </div>
     </nav>
-
-    <div ng-controller="CarouselDemoCtrl" style="height: 100%; position: relative">
-        <div>
-            <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-                <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-                    <img ng-src="{{slide.image}}" style="width: 100vw;height: 100vh ;">
-
-                </div>
-            </div>
+    <div class="container-fluid" ng-controller="CarouselDemoCtrl" style="height: 100%; position: relative;">
+      <div class="row">
+        <div uib-carousel="" active="active" interval="myInterval" no-wrap="noWrapSlides">
+          <div uib-slide="" ng-repeat="slide in slides track by slide.id" index="slide.id"><img ng-src="{{slide.image}}" style="width: 100vw;height: 100vh ;"/></div>
         </div>
+      </div>
     </div>
-
-    <div class="bg-dark row about-content">
-        <div class="container text-center col-lg-6 aboutContentText">
-            Татуировки - это наш конек! Black Mark Gang Tattoo - это развивающийся, комфортабельный тату салон в Черкассах. Главной целью салона является предоставление высококлассного, квалифицированного обслуживания в уютной и доброжелательной атмосфере салона. Мы перевернём ваше представление о татуировках, воплотив ваши идеи и мечты в реальность - новое украшение никогда вам не надоест.
-        </div>
+    <div class="bg-dark container-fluid">
+      <div class="row" style="padding: 0;margin: 0;">
+        <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" style="height: inherit;"><img class="img-responsive" src="../img/machine.png" style="margin-top:8vh;"/></div>
+        <div class="text-center aboutContentText center-block col-lg-6 col-sm-6 col-xs-6 col-md-6 text-justify">Татуировки - это наш конек! Black Mark Gang Tattoo - это развивающийся, комфортабельный тату салон в Черкассах. Главной целью салона является предоставление высококлассного, квалифицированного обслуживания в уютной и доброжелательной атмосфере салона. Мы перевернём ваше представление о татуировках, воплотив ваши идеи и мечты в реальность - новое украшение никогда вам не надоест.</div>
+      </div>
     </div>
-
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="about.html" class="portfolio-box">
-                        <img src="img/news.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Новости
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
-                        <img src="img/sale.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-
-                                <div class="project-name">
-                                    Акции
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="bg-dark insert">
+    <div ng-controller="portfolioCtrl">
+      <div class="insert" ng-style="ngPortfolio">
         <div class="container text-center">
-            <div class="call-to-action">
-                <h1>Портфолио</h1>
-            </div>
-        </div>
-    </div>
-
-    <section id="contact">
-        <div class="container">
-            <hr>
+          <div class="call-to-action">
+            <h1 style="color:white;">Портфолио</h1>
             <div class="row">
-
-                <div class="col-lg-2">
-                    <p>
-                        (063)040-06-87
-                        <br>
-                        (063)153-25-98
-                    </p>
-                </div>
-
-                <div class="col-lg-3 ">
-                    <img src="img/ico/youtube.png" height="24" width="24"/>
-                    <img src="img/ico/rus-vk-01.png" height="24" width="24"/>
-                    <img src="img/ico/instagram.png" height="24" width="24"/>
-                    <img src="img/ico/facebook.png" height="24" width="24"/>
-
-                </div>
+              <div ng-repeat="element in newsArray">
+                <div class="col-lg-4 portfolioImg"><img class="img-responsive" ng-src="{{element.image}}" height="400px" width="400px"/></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="container-fluid" style="background-color: black; height: 700px; margin:0; padding:0;">
+      <hr/>
+      <h1 class="text-center" style="color:white ;">Мы на карте!</h1>
+      <iframe class="center-block" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.093912446424!2d32.0881598557783!3d49.42853987145916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14b09f1387e45%3A0xe33b9d42b638156e!2z0LHRg9C70YzQstCw0YAg0KjQtdCy0YfQtdC90LrQsCwgMzQzLCDQp9C10YDQutCw0YHQuCwg0KfQtdGA0LrQsNGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCDQo9C60YDQsNC40L3QsCwgMTgwMDA!5e0!3m2!1sru!2sru!4v1490908392878" width="50%" height="70%" frameborder="0" style="border:0; padding-bottom: 30px;" allowfullscreen=""></iframe>
+    </div>
+    <section id="contact">
+      <div class="container">
+        <hr/>
+        <div class="row">
+          <div class="col-lg-1 col-md-3 col-sm-3 col-xs-3"><img src="../img/ico/phone.png" height="60px" width="60px"/></div>
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+            <p style="font-size: 20px;">(063)040-06-87<br/>  (063)153-25-98</p>
+          </div>
+          <div class="col-lg-3 col-lg-offset-6 footer-img col-md-3 col-sm-3 col-xs-3"><a href="https://vk.com/bmgtattoo"><img src="../img/ico/vk.png" height="60px" width="60px"/></a><a href="https://www.instagram.com/bogdan_lutsenko/"><img src="../img/ico/instagram.png" height="50px" width="50px"/></a></div>
+        </div>
+      </div>
     </section>
-
-</body>
-
+  </body>
 </html>

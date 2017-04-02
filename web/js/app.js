@@ -1,19 +1,19 @@
-var app = angular.module("frontendApp",['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute']);
+
+
 
 var origin = document.location.origin;
 var folder = document.location.pathname.split('/')[1];
 
 var path = origin + "/" + folder + "views/";
 
-app.
-config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
             templateUrl: path + 'index.html',
             controller: 'CarouselDemoCtrl'
         }
-    ).when('/article',{
-            templateUrl: path + 'about.html',
-            controller: 'articleController'
+    ).when('/about',{
+            templateUrl: path + 'about.html'
         }
     ).otherwise(
         {
@@ -21,15 +21,6 @@ config(['$routeProvider', function ($routeProvider) {
         }
     );
 }]);
-
-app.controller("articleController", function ($scope, $http) {
-    $http.get("/api/articles/")
-        .then(function(response){
-            $scope.newsArray = response.data;
-
-
-        });
-});
 
 app.controller('CarouselDemoCtrl', function ($scope) {
     $scope.myInterval = 5000;
@@ -40,7 +31,7 @@ app.controller('CarouselDemoCtrl', function ($scope) {
 
     $scope.addSlide = function() {
         slides.push({
-            image: 'img/header' + i + '.jpg',
+            image: '../img/header' + i + '.jpg',
             id: currIndex++
         });
     };
@@ -50,3 +41,29 @@ app.controller('CarouselDemoCtrl', function ($scope) {
     }
 
 });
+
+app.controller("getNews", function ($scope, $http) {
+    $http.get("http://bmgt.herokuapp.com/api/articles/")
+        .then(function(response){
+            $scope.newsArray = response.data;
+
+
+        });
+
+
+});
+
+app.controller("portfolioCtrl", function ($scope,$http) {
+    $http.get("api/articles/")
+        .then(function(response){
+            $scope.newsArray = response.data;
+
+
+        });
+
+    $scope.ngPortfolio = {
+        "background-color" : "black",
+        "height":"auto"
+    };
+});
+
