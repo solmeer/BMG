@@ -13,7 +13,8 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'CarouselDemoCtrl'
         }
     ).when('/about',{
-            templateUrl: path + 'about.html'
+            templateUrl: path + 'about.html',
+            controller: 'CarouselDemoCtrl'
         }
     ).otherwise(
         {
