@@ -13,17 +13,32 @@
     "browser-sync": "^2.13.0",
     "font-awesome": "^4.6.3",
     "gulp": "^3.9.1",
+    "gulp-cached": "^1.1.1",
+    "gulp-changed": "^2.0.0",
+    "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.10",
+    "gulp-debug": "^3.1.0",
+    "gulp-filter": "^5.0.0",
     "gulp-header": "^1.8.7",
+    "gulp-if": "^2.0.2",
+    "gulp-jade-inheritance": "^0.5.5",
     "gulp-less": "^3.1.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-pug-inheritance": "^0.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.4",
     "jquery": "^1.11.3",
     "magnific-popup": "^1.1.0",
+    "pug": "^2.0.0-beta11",
     "scrollreveal": "^3.1.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BlackrockDigital/startbootstrap-creative.git"
+  },
+  "dependencies": {
+    "angular-route": "^1.6.4",
+    "gulp-decompress": "^2.0.1",
+    "gulp-dest": "^0.2.3"
   }
 }

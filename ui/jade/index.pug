@@ -1,0 +1,38 @@
+html(ng-app="app")
+    head
+        include head.pug
+        block head
+    body
+        include menu.pug
+        block menu
+            div.container-fluid(ng-controller='CarouselDemoCtrl', style='height: 100%; position: relative')
+                div.row
+                    div(uib-carousel='', active='active', interval='myInterval', no-wrap='noWrapSlides')
+                        div(uib-slide='', ng-repeat='slide in slides track by slide.id', index='slide.id')
+                            img(ng-src='{{slide.image}}', style='width: 100vw;height: 100vh ;')
+
+            div.bg-dark.container-fluid
+                div.row(style='padding: 0;margin: 0')
+                    div.col-lg-3.col-sm-3.col-xs-3.col-md-3(style='height: inherit')
+                        img.img-responsive(src='../img/machine.png', style='margin-top:8vh')
+                    div.text-center.aboutContentText.center-block.col-lg-6.col-sm-6.col-xs-6.col-md-6.text-justify
+                        | Татуировки - это наш конек! Black Mark Gang Tattoo - это развивающийся, комфортабельный тату салон в Черкассах. Главной целью салона является предоставление высококлассного, квалифицированного обслуживания в уютной и доброжелательной атмосфере салона. Мы перевернём ваше представление о татуировках, воплотив ваши идеи и мечты в реальность - новое украшение никогда вам не надоест.
+
+
+            div(ng-controller='portfolioCtrl')
+                div.insert(ng-style='ngPortfolio')
+                    div.container.text-center
+                        div.call-to-action
+                            h1(style="color:white;") Портфолио
+                            div.row
+                                div(ng-repeat='element in newsArray')
+                                    div.col-lg-4.portfolioImg
+                                        img(ng-src='data:image/png;base64,{{element.image}}', height='400px', width='400px').img-responsive
+        div.map.container-fluid(style="background-color: black; margin:0; padding:0")
+            hr
+            h1.text-center(style="color:white ") Мы на карте!
+            iframe.center-block(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2182.093912446424!2d32.0881598557783!3d49.42853987145916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14b09f1387e45%3A0xe33b9d42b638156e!2z0LHRg9C70YzQstCw0YAg0KjQtdCy0YfQtdC90LrQsCwgMzQzLCDQp9C10YDQutCw0YHQuCwg0KfQtdGA0LrQsNGB0YzQutCwINC-0LHQu9Cw0YHRgtGMLCDQo9C60YDQsNC40L3QsCwgMTgwMDA!5e0!3m2!1sru!2sru!4v1490908392878', width='50%', height='70%', frameborder='0', style='border:0; padding-bottom: 30px', allowfullscreen='')
+
+        include footer
+        block footer
+
