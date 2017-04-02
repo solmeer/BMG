@@ -1,4 +1,4 @@
-var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute']);
 
 app.controller('CarouselDemoCtrl', function ($scope) {
     $scope.myInterval = 5000;
@@ -9,7 +9,7 @@ app.controller('CarouselDemoCtrl', function ($scope) {
 
     $scope.addSlide = function() {
         slides.push({
-            image: 'img/header' + i + '.jpg',
+            image: '../img/header' + i + '.jpg',
             id: currIndex++
         });
     };
@@ -45,3 +45,22 @@ app.controller("portfolioCtrl", function ($scope,$http) {
     };
 });
 
+var origin = document.location.origin;
+var folder = document.location.pathname.split('/')[1];
+
+var path = origin + "/" + folder + "/ui/" + "views/";
+
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/', {
+            templateUrl: path + 'index.html',
+            controller: 'CarouselDemoCtrl'
+        }
+    ).when('/about',{
+            templateUrl: path + 'about.html'
+        }
+    ).otherwise(
+        {
+            redirectTo: '/'
+        }
+    );
+}]);

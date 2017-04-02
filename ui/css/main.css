@@ -15,19 +15,24 @@
 
 }
 
-@media screen and (max-height: 480px){
+#contact{
+    padding: 0;
+}
+
+@media screen and (max-height: 600px){
     .aboutContentText {
         font-size: 15px;
     }
 }
 
-@media screen and (max-height: 600px) {
-    .aboutContentText {
-        font-size: 19px;
-    }
+
+
+.portfolioImg{
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
-@media screen and (max-width: 850px) {
-    .aboutContentText {
-        font-size: 24px;
-    }
+
+.footer-img img:hover{
+
+    cursor: pointer;
 }
