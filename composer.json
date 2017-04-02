@@ -30,7 +30,10 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
         "javiereguiluz/easyadmin-bundle": "^1.16",
-        "vich/uploader-bundle": "^1.5"
+        "vich/uploader-bundle": "^1.5",
+        "liip/imagine-bundle": "^1.7",
+        "knplabs/knp-gaufrette-bundle": "~0.3",
+        "aws/aws-sdk-php-symfony": "~1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

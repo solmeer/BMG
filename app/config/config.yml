@@ -2,11 +2,8 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
-    app.path.articles_images: /uploads/images/articles
+      locale: en
 
 framework:
     #esi:             ~
@@ -72,23 +69,28 @@ swiftmailer:
     spool:     { type: memory }
 
 easy_admin:
+    site_name: 'BMG Tatoo'
     design:
-      form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig']
+      color_scheme: 'dark'
+      brand_color: '#000000'
+      form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig','@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig']
 
     entities:
         Article:
             class: AppBundle\Entity\Article
+            label: 'Статьи'
             list:
+              title: 'Все статьи'
               fields:
                     - id
                     - { property: 'title', type: 'text' }
                     - { property: 'text', type: 'text' }
                     - { property: 'author'}
                     - { property: 'category'}
-                    - { property: 'image', type: 'image', base_path: %app.path.articles_images% }
+                    - { property: 'image', type: 'image' }
             show:
               fields:
-                    - { property: 'image', type: 'image', base_path: %app.path.articles_images% }
+                    - { property: 'image', type: 'image'}
             form:
               fields:
                   - { property: 'title', type: 'text' }
@@ -98,12 +100,66 @@ easy_admin:
                   - { property: 'imageFile', type: 'vich_file' }
         Person:
             class: AppBundle\Entity\Person
+            label: 'Персонал'
+            list:
+              title: 'Весь персонал'
+
         Image:
             class: AppBundle\Entity\Image
+            label: 'Изображения'
+            list:
+              title: 'Все изображения'
 
 vich_uploader:
     db_driver: orm
+    storage:   gaufrette
+
     mappings:
-            articles_images:
-                uri_prefix:         "%app.path.articles_images%"
-                upload_destination: "%kernel.root_dir%/../web/uploads/images/articles"
+        article_images:
+            uri_prefix:         ~
+            upload_destination: article_images
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        portfolio_images:
+            uri_prefix:         ~
+            upload_destination: portfolio_images
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+knp_gaufrette:
+    stream_wrapper: ~
+    adapters:
+        article:
+            aws_s3:
+                service_id: 'aws.s3'
+                bucket_name: 'bmgtatoo-bucket'
+                options:
+                    create: true
+                    directory: article_photos
+
+        portfolio:
+            aws_s3:
+                service_id: 'aws.s3'
+                bucket_name: 'bmgtatoo-bucket'
+                options:
+                    create : true
+                    directory: portfolio_photos
+
+    filesystems:
+        article_images:
+                adapter: article
+
+        portfolio_images:
+                adapter: portfolio
+
+aws:
+    version: latest
+    region: '%aws_region%'
+    credentials:
+        key: '%aws_key%'
+        secret: "%aws_secret_key%"
+    S3:
+        version: '2006-03-01'

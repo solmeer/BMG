@@ -12,7 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
- * @Vich\Uploadable()
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -44,19 +44,25 @@ class Article
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="image")
      * @Groups({"group1"})
      */
     private $image;
 
     /**
-    * @Vich\UploadableField(mapping="articles_images", fileNameProperty="image")
-    * @var File
-    */
+     * @Vich\UploadableField(mapping="article_images", fileNameProperty="image")
+     * @var File
+     */
     private $imageFile;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="article")
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="articles")
      * @ORM\JoinColumn(name="author_id",referencedColumnName="id")
      */
     private $author;
@@ -189,7 +195,7 @@ class Article
      */
     public function setImage($image)
     {
-        $this->image = $image;
+        $this->image = 'https://s3-us-west-2.amazonaws.com/bmgtatoo-bucket/article_photos/'.$image;
 
         return $this;
     }
@@ -207,6 +213,10 @@ class Article
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
     }
 
     public function getImageFile()
