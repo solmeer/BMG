@@ -1,4 +1,4 @@
-var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute']);
+var app = angular.module("app",['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
 
 
@@ -13,8 +13,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'CarouselDemoCtrl'
         }
     ).when('/about',{
-            templateUrl: path + 'about.html',
-            controller: 'CarouselDemoCtrl'
+            templateUrl: path + 'about.html'
         }
     ).otherwise(
         {
