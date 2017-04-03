@@ -53,9 +53,6 @@ DirectoryIndex app.php
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^ - [L]
 
-    RewriteCond %{HTTPS} off
-    RewriteRule (.*) https://%{bmgt.herokuapp.com}/%$1 [R,L]
-
     # Rewrite all other queries to the front controller.
     RewriteRule ^ %{ENV:BASE}/app.php [L]
 
