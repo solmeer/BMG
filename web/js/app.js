@@ -1,4 +1,4 @@
-var app = angular.module("app",['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app = angular.module("frontendapp",['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
 var origin = document.location.origin;
 var folder = document.location.pathname.split('/')[1];
