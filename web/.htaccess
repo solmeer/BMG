@@ -56,9 +56,6 @@ DirectoryIndex app.php
     # Rewrite all other queries to the front controller.
     RewriteRule ^ %{ENV:BASE}/app.php [L]
 
-    RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 </IfModule>
 
 <IfModule !mod_rewrite.c>
