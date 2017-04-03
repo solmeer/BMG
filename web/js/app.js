@@ -20,7 +20,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     );
 }]);
 
-app.controller('CarouselDemoCtrl', function ($scope) {
+app.controller('CarouselDemoCtrl',  ['$scope' ,function ($scope) {
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
@@ -38,7 +38,7 @@ app.controller('CarouselDemoCtrl', function ($scope) {
         $scope.addSlide();
     }
 
-});
+}]);
 
 app.controller("getNews", function ($scope, $http) {
     $http.get("http://bmgt.herokuapp.com/api/articles/")
@@ -51,7 +51,7 @@ app.controller("getNews", function ($scope, $http) {
 
 });
 
-app.controller("portfolioCtrl", function ($scope,$http) {
+app.controller("portfolioCtrl",['$scope', '$http' ,function ($scope,$http) {
     $http.get("api/articles/")
         .then(function(response){
             $scope.newsArray = response.data;
@@ -63,5 +63,5 @@ app.controller("portfolioCtrl", function ($scope,$http) {
         "background-color" : "black",
         "height":"auto"
     };
-});
+}]);
 
