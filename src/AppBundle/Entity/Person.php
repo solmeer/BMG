@@ -48,9 +48,9 @@ class Person
     private $articles;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tattoo", mappedBy="author")
      */
-    private $images;
+    private $done_tattoos;
 
 
     /**
@@ -134,13 +134,14 @@ class Person
     {
         return $this->photo;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->done_tattoos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -178,37 +179,37 @@ class Person
     }
 
     /**
-     * Add image
+     * Add done tattoo
      *
-     * @param \AppBundle\Entity\Image $image
+     * @param \AppBundle\Entity\Tattoo $tattoo
      *
      * @return Person
      */
-    public function addImage(\AppBundle\Entity\Image $image)
+    public function addTattoo(\AppBundle\Entity\Tattoo $tattoo)
     {
-        $this->images[] = $image;
+        $this->done_tattoos[] = $tattoo;
 
         return $this;
     }
 
     /**
-     * Remove image
+     * Remove done tattoo
      *
-     * @param \AppBundle\Entity\Image $image
+     * @param \AppBundle\Entity\Tattoo $tattoo
      */
-    public function removeImage(\AppBundle\Entity\Image $image)
+    public function removeTattoo(\AppBundle\Entity\Tattoo $tattoo)
     {
-        $this->images->removeElement($image);
+        $this->done_tattoos->removeElement($tattoo);
     }
 
     /**
-     * Get images
+     * Get done_tattoos
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getImages()
+    public function getTattoos()
     {
-        return $this->images;
+        return $this->done_tattoos;
     }
 
     public function __toString() {

@@ -75,6 +75,11 @@ easy_admin:
       brand_color: '#000000'
       form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig','@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig']
 
+    formats:
+      date:     'd/m/Y'
+      time:     'H:i'
+      datetime: 'd/m/Y H:i:s'
+
     entities:
         Article:
             class: AppBundle\Entity\Article
@@ -104,11 +109,24 @@ easy_admin:
             list:
               title: 'Весь персонал'
 
-        Image:
-            class: AppBundle\Entity\Image
-            label: 'Изображения'
+        Tattoo:
+            class: AppBundle\Entity\Tattoo
+            label: 'Портфолио'
             list:
-              title: 'Все изображения'
+              title: 'Все тату'
+              fields:
+                  - { property: 'title', type: 'text' }
+                  - { property: 'description', type: 'text' }
+                  - { property: 'author'}
+                  - { property: 'updateAt', type: 'datetime'}
+                  - { property: 'image', type: 'image' }
+
+            form:
+              fields:
+                  - { property: 'title', type: 'text' }
+                  - { property: 'description', type: 'text' }
+                  - { property: 'author'}
+                  - { property: 'imageFile', type: 'vich_file' }
 
 vich_uploader:
     db_driver: orm
@@ -122,9 +140,16 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
-        portfolio_images:
+        tattoo_images:
             uri_prefix:         ~
-            upload_destination: portfolio_images
+            upload_destination: tattoo_images
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        esquisse_images:
+            uri_prefix:         ~
+            upload_destination: esquisse_images
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -135,26 +160,36 @@ knp_gaufrette:
         article:
             aws_s3:
                 service_id: 'aws.s3'
-                bucket_name: 'bmgtatoo-bucket'
+                bucket_name: 'bmgtattoo-bucket'
                 options:
                     create: true
                     directory: article_photos
 
-        portfolio:
+        tattoo:
             aws_s3:
                 service_id: 'aws.s3'
-                bucket_name: 'bmgtatoo-bucket'
+                bucket_name: 'bmgtattoo-bucket'
                 options:
                     create : true
-                    directory: portfolio_photos
+                    directory: tattoo_photos
+
+        esquisse:
+            aws_s3:
+                service_id: 'aws.s3'
+                bucket_name: 'bmgtattoo-bucket'
+                options:
+                    create : true
+                    directory: esquisse_photos
 
     filesystems:
         article_images:
                 adapter: article
 
-        portfolio_images:
-                adapter: portfolio
+        tattoo_images:
+                adapter: tattoo
 
+        esquisse_images:
+                adapter: esquisse
 aws:
     version: latest
     region: '%aws_region%'

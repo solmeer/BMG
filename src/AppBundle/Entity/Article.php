@@ -195,7 +195,7 @@ class Article
      */
     public function setImage($image)
     {
-        $this->image = 'https://s3-us-west-2.amazonaws.com/bmgtatoo-bucket/article_photos/'.$image;
+        $this->image = 'https://s3-us-west-2.amazonaws.com/bmgtattoo-bucket/article_photos/'.$image;
 
         return $this;
     }
