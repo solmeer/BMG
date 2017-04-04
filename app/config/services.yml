@@ -3,3 +3,9 @@
 parameters:
 
 services:
+   example.listener:
+        class: AppBundle\Listeners\DeleteS3ImageListener
+        arguments:
+             - '@aws.s3'
+        tags:
+            - { name: kernel.event_listener, event: vich_uploader.pre_remove , method: onPreRemove}

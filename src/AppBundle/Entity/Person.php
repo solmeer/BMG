@@ -28,19 +28,6 @@ class Person
      */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="info", type="text")
-     */
-    private $info;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="text")
-     */
-    private $photo;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Article", mappedBy="author")
@@ -50,7 +37,7 @@ class Person
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tattoo", mappedBy="author")
      */
-    private $done_tattoos;
+    private $tattoos;
 
 
     /**
@@ -87,53 +74,6 @@ class Person
         return $this->name;
     }
 
-    /**
-     * Set info
-     *
-     * @param string $info
-     *
-     * @return Person
-     */
-    public function setInfo($info)
-    {
-        $this->info = $info;
-
-        return $this;
-    }
-
-    /**
-     * Get info
-     *
-     * @return string
-     */
-    public function getInfo()
-    {
-        return $this->info;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return Person
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
 
     /**
      * Constructor
@@ -141,7 +81,7 @@ class Person
     public function __construct()
     {
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->done_tattoos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tattoos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -187,7 +127,7 @@ class Person
      */
     public function addTattoo(\AppBundle\Entity\Tattoo $tattoo)
     {
-        $this->done_tattoos[] = $tattoo;
+        $this->tattoos[] = $tattoo;
 
         return $this;
     }
@@ -199,7 +139,7 @@ class Person
      */
     public function removeTattoo(\AppBundle\Entity\Tattoo $tattoo)
     {
-        $this->done_tattoos->removeElement($tattoo);
+        $this->tattoos->removeElement($tattoo);
     }
 
     /**
@@ -209,7 +149,7 @@ class Person
      */
     public function getTattoos()
     {
-        return $this->done_tattoos;
+        return $this->tattoos;
     }
 
     public function __toString() {

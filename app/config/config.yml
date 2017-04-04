@@ -69,16 +69,16 @@ swiftmailer:
     spool:     { type: memory }
 
 easy_admin:
-    site_name: 'BMG Tatoo'
+    site_name: 'BMG Tattoo'
     design:
       color_scheme: 'dark'
       brand_color: '#000000'
       form_theme: ['horizontal', 'VichUploaderBundle:Form:fields.html.twig','@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig']
 
     formats:
-      date:     'd/m/Y'
+      date:     'd.m.Y'
       time:     'H:i'
-      datetime: 'd/m/Y H:i:s'
+      datetime: 'd.m.Y  H:i:s'
 
     entities:
         Article:
@@ -86,13 +86,16 @@ easy_admin:
             label: 'Статьи'
             list:
               title: 'Все статьи'
+              actions:
+                  edit: { name: edit, type: method, label: 'Редактировать',  css_class: 'btn btn-default', icon: pencil }
+                  delete: { name: delete, type: method, label: 'Удалить',  css_class: 'btn btn-danger', icon: remove }
+
               fields:
-                    - id
-                    - { property: 'title', type: 'text' }
-                    - { property: 'text', type: 'text' }
-                    - { property: 'author'}
-                    - { property: 'category'}
-                    - { property: 'image', type: 'image' }
+                    - { property: 'title',label: 'Заголовок'}
+                    - { property: 'text',label: 'Текст'}
+                    - { property: 'author',label: 'Автор'}
+                    - { property: 'category',label: 'Категория'}
+                    - { property: 'image', type: 'image',label: 'Фотография' }
             show:
               fields:
                     - { property: 'image', type: 'image'}
@@ -108,6 +111,13 @@ easy_admin:
             label: 'Персонал'
             list:
               title: 'Весь персонал'
+              actions:
+                  edit: { name: edit, type: method, label: 'Редактировать',  css_class: 'btn btn-default', icon: pencil }
+                  delete: { name: delete, type: method, label: 'Удалить',  css_class: 'btn btn-danger', icon: remove }
+
+            form:
+              fields:
+                  - { property: 'name', type: 'text' }
 
         Tattoo:
             class: AppBundle\Entity\Tattoo
@@ -115,11 +125,15 @@ easy_admin:
             list:
               title: 'Все тату'
               fields:
-                  - { property: 'title', type: 'text' }
-                  - { property: 'description', type: 'text' }
-                  - { property: 'author'}
-                  - { property: 'updateAt', type: 'datetime'}
-                  - { property: 'image', type: 'image' }
+                  - { property: 'title', label: 'Название' }
+                  - { property: 'description', label: 'Описание' }
+                  - { property: 'author', label: 'Автор'}
+                  - { property: 'updatedAt', label: 'Обновлено'}
+                  - { property: 'image', type: 'image', label: 'Фотография' }
+
+              actions:
+                  edit: { name: edit, type: method, label: 'Редактировать',  css_class: 'btn btn-default', icon: pencil }
+                  delete: { name: delete, type: method, label: 'Удалить',  css_class: 'btn btn-danger', icon: remove }
 
             form:
               fields:

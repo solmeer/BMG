@@ -52,7 +52,7 @@ app.controller("getNews", function ($scope, $http) {
 });
 
 app.controller("portfolioCtrl",['$scope', '$http' ,function ($scope,$http) {
-    $http.get("api/articles/")
+    $http.get("api/tattoo/")
         .then(function(response){
             $scope.newsArray = response.data;
 

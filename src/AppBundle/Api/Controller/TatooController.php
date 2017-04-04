@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Serializer;
 
 /**
  *
- * @Route("/api/tatoo")
+ * @Route("/api/tattoo")
  */
 class TatooController extends Controller
 {
@@ -26,15 +26,14 @@ class TatooController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $articles = $em->getRepository('AppBundle:Tatoo')->findAll();
-
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $normalizer = new PropertyNormalizer($classMetadataFactory);
         $serializer = new Serializer([$normalizer]);
 
-        $tatoos = $serializer->normalize($articles, null, array('groups' => array('group1')));
+        $tatoos = $em->getRepository('AppBundle:Tattoo')->findAll();
+        $tatoos = $serializer->normalize($tatoos, null, array('groups' => array('group1')));
 
-        $response = new Response(json_encode($articles));
+        $response = new Response(json_encode($tatoos));
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
 

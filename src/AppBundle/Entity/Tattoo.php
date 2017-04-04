@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Aws\S3\S3Client;
 
 /**
  * Tattoo
@@ -30,6 +29,7 @@ class Tattoo
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=60)
+     * @Groups({"group1"})
      */
     private $title;
 
@@ -37,6 +37,7 @@ class Tattoo
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @Groups({"group1"})
      */
     private $description;
 
@@ -44,6 +45,7 @@ class Tattoo
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
+     * @Groups({"group1"})
      */
     private $image;
 
@@ -186,20 +188,12 @@ class Tattoo
         return $this->author;
     }
 
+    /**
+     * @return \DateTime
+     */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * @ORM\PostRemove()
-     */
-    public function deleteImgFromS3(){
-        $s3 = S3Client::factory();
-
-        $s3->deleteObject(array(
-            'Bucket' => 'bmgtattoo-bucket',
-            'Key'    => str_replace("https://s3-us-west-2.amazonaws.com/bmgtattoo-bucket/","",$this->image)));
     }
 }
 
