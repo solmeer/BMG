@@ -1,11 +1,16 @@
 var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute']);
 
-app.controller('CarouselDemoCtrl', function ($scope) {
+app.controller('CarouselDemoCtrl', function ($scope,$http) {
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
     var slides = $scope.slides = [];
     var currIndex = 0;
+
+
+
+
+
 
     $scope.addSlide = function() {
         slides.push({
@@ -18,6 +23,10 @@ app.controller('CarouselDemoCtrl', function ($scope) {
         $scope.addSlide();
     }
 
+    $scope.start = slides.length - 1;
+    $scope.countOfImg = 6;
+
+
 });
 
 app.controller("getNews", function ($scope, $http) {
@@ -27,6 +36,9 @@ app.controller("getNews", function ($scope, $http) {
 
 
         });
+
+
+
 
 
 });
@@ -64,3 +76,4 @@ app.config(['$routeProvider', function ($routeProvider) {
         }
     );
 }]);
+
