@@ -1,12 +1,12 @@
 @font-face {
     font-family: Cleo; /* Имя шрифта */
-    src: url("../fonts/Cleopatra.ttf"); /* Путь к файлу со шрифтом */
+    src: url("fonts/Cleopatra.ttf"); /* Путь к файлу со шрифтом */
 }
 
 .aboutContentText{
 
     font-family: Cleo;
-    font-size: 34px;
+    font-size: 29px;
     color: white;
     margin-top: 9vh;
     margin-bottom: 9vh;
@@ -28,11 +28,26 @@
 
 
 .portfolioImg{
+
+    /*width: 300px;*/
+    /*height: 150px;*/
+    /*max-height: 500px;*/
+    /*overflow: hidden;*/
+
+
+    /*position: relative;*/
+    /*padding: 0;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
     margin-bottom: 40px;
     margin-top: 20px;
 }
 
-.footer-img img:hover{
+.portfolioImg img{
+    width: 500px;
+    height: 250px;
+}
 
+.footer-img img:hover{
     cursor: pointer;
 }

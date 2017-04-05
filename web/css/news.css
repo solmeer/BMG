@@ -1,0 +1,55 @@
+body{
+    background-color: #0b0b0b;
+}
+
+#pagination{
+
+}
+
+#content{
+
+
+    margin: 100px auto 0 auto;
+
+}
+
+.new{
+
+
+    margin: 0 auto;
+    overflow: hidden;
+
+
+
+
+
+}
+
+#newsBlock{
+    margin: 0 auto;
+    width: 80%;
+}
+
+.new p title{
+    margin-top: 20px;
+    text-align: justify;
+
+    height: 300px;
+    overflow: hidden;
+
+
+}
+
+.new:hover{
+    color:red;
+}
+
+.new img{
+    margin: 0 auto;
+    height: 300px;
+    width: 100%;
+}
+
+#pagination{
+    margin: 0 auto;
+}

@@ -2,6 +2,7 @@ easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
     prefix:   admin
+    schemes: [https]
 
 api:
     resource: "@AppBundle/Api/Controller/"
@@ -10,3 +11,4 @@ api:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    schemes: [https]

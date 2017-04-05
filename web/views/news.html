@@ -1,0 +1,75 @@
+
+<html ng-app="page">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Black Mark Gang Tattoo</title>
+    <link href="../css/creative.css" rel="stylesheet"/>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script src="../js/slider.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/portfolio/component.css"/>
+    <link rel="stylesheet" href="../css/portfolio/demo.css"/>
+    <link rel="stylesheet" href="../css/portfolio/main.css"/>
+    <link rel="stylesheet" href="../css/news.css"/>
+    <script src="../js/app.js"></script>
+    <link rel="stylesheet" href="../css/about.css"/>
+    <script src="../js/portfolio/modernizr.custom.js"></script>
+    <script src="../js/portfolio/imagesloaded.pkgd.min.js"></script>
+    <script src="../js/portfolio/masonry.pkgd.min.js"></script>
+    <script src="../js/portfolio/classie.js"></script>
+    <script src="../js/portfolio/cbpGridGallery.js"></script>
+    <script src="../js/paginator.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="/">BMGT</a></div>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="nav navbar-nav">
+            <li><a class="page-scroll" href="#">Студия</a></li>
+            <li><a class="page-scroll" href="#!/portfolio">Портфолио</a></li>
+            <li><a class="page-scroll" href="#!/news">Новости</a></li>
+            <li><a class="page-scroll" href="">Акции</a></li>
+            <li><a class="page-scroll" href="#!/about">О нас</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </body>
+  <div ng-controller="getNews">
+    <div class="container-fluid">
+      <div class="row" id="content">
+        <div ng-repeat="element in newsArray  |  limitTo: itemsPerPage">
+          <div class="col-lg-4 new">
+            <h3>{{element.title}}</h3><img class="img-responsive" ng-src="{{element.image}}"/>
+            <p id="newsText">{{element.text}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="pagination">
+    <button class="pull-left btn btn-primary btn-sm" ng-disabled="firstPage()" ng-click="pageBack()">Назад</button><span>{{currentPage+1}} из {{numberOfPages()}}</span>
+    <button class="pull-right btn btn-primary btn-sm" ng-disabled="lastPage()" ng-click="pageForward()">Вперед</button>
+  </div>
+  <section id="contact">
+    <div class="container">
+      <hr/>
+      <div class="row">
+        <div class="col-lg-1 col-md-3 col-sm-3 col-xs-3"><img src="../img/ico/phone.png" height="60px" width="60px"/></div>
+        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+          <p style="font-size: 20px;">(063)040-06-87<br/>  (063)153-25-98</p>
+        </div>
+        <div class="col-lg-3 col-lg-offset-6 footer-img col-md-3 col-sm-3 col-xs-3"><a href="https://vk.com/bmgtattoo"><img src="../img/ico/vk.png" height="60px" width="60px"/></a><a href="https://www.instagram.com/bogdan_lutsenko/"><img src="../img/ico/instagram.png" height="50px" width="50px"/></a></div>
+      </div>
+    </div>
+  </section>
+</html>

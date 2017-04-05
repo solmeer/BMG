@@ -1,4 +1,4 @@
-var app = angular.module("frontendapp",['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var app = angular.module("app",['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute']);
 
 var origin = document.location.origin;
 var folder = document.location.pathname.split('/')[1];
@@ -13,6 +13,13 @@ app.config(['$routeProvider', function ($routeProvider) {
     ).when('/about',{
             templateUrl: path + 'about.html'
         }
+    ).when('/news',{
+            controller: 'getNews',
+            templateUrl: path + 'news.html'
+        }
+    ).when('/portfolio',{
+            templateUrl: path + 'portfolio.html'
+        }
     ).otherwise(
         {
             redirectTo: '/'
@@ -20,7 +27,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     );
 }]);
 
-app.controller('CarouselDemoCtrl',  ['$scope' ,function ($scope) {
+app.controller('CarouselDemoCtrl', function ($scope,$http) {
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
@@ -38,30 +45,28 @@ app.controller('CarouselDemoCtrl',  ['$scope' ,function ($scope) {
         $scope.addSlide();
     }
 
-}]);
-
-app.controller("getNews", function ($scope, $http) {
-    $http.get("http://bmgt.herokuapp.com/api/articles/")
-        .then(function(response){
-            $scope.newsArray = response.data;
-
-
-        });
-
-
+    $scope.start = slides.length - 1;
+    $scope.countOfImg = 6;
 });
 
-app.controller("portfolioCtrl",['$scope', '$http' ,function ($scope,$http) {
+app.controller("getNews", function ($scope, $http) {
+    $http.get("api/articles/")
+        .then(function(response){
+            $scope.newsArray = response.data;
+        });
+});
+
+app.controller("portfolioCtrl", function ($scope,$http) {
     $http.get("api/tattoo/")
         .then(function(response){
             $scope.newsArray = response.data;
-
-
         });
 
     $scope.ngPortfolio = {
         "background-color" : "black",
         "height":"auto"
     };
-}]);
+});
+
+
 
