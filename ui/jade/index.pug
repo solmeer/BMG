@@ -2,10 +2,10 @@ html(ng-app="app")
     head
         include head.pug
         block head
-    body
+    body(ng-controller='CarouselDemoCtrl')
         include menu.pug
         block menu
-            div.container-fluid(ng-controller='CarouselDemoCtrl', style='height: 100%; position: relative')
+            div.container-fluid(, style='height: 100%; position: relative')
                 div.row
                     div(uib-carousel='', active='active', interval='myInterval', no-wrap='noWrapSlides')
                         div(uib-slide='', ng-repeat='slide in slides track by slide.id', index='slide.id')
@@ -15,19 +15,19 @@ html(ng-app="app")
                 div.row(style='padding: 0;margin: 0')
                     div.col-lg-3.col-sm-3.col-xs-3.col-md-3(style='height: inherit')
                         img.img-responsive(src='../img/machine.png', style='margin-top:8vh')
-                    div.text-center.aboutContentText.center-block.col-lg-6.col-sm-6.col-xs-6.col-md-6.text-justify
+                    div.text-center.aboutContentText.center-block.col-lg-9.col-sm-9.col-xs-9.col-md-9.text-justify
                         | Татуировки - это наш конек! Black Mark Gang Tattoo - это развивающийся, комфортабельный тату салон в Черкассах. Главной целью салона является предоставление высококлассного, квалифицированного обслуживания в уютной и доброжелательной атмосфере салона. Мы перевернём ваше представление о татуировках, воплотив ваши идеи и мечты в реальность - новое украшение никогда вам не надоест.
 
 
-            div(ng-controller='portfolioCtrl')
-                div.insert(ng-style='ngPortfolio')
-                    div.container.text-center
+            div(ng-controller="portfolioCtrl")
+                div.insert(class="insert" ng-style="ngPortfolio")
+                    div.container.center-block.text-center
                         div.call-to-action
                             h1(style="color:white;") Портфолио
                             div.row
-                                div(ng-repeat='element in newsArray')
+                                div(ng-repeat='element in newsArray | limitTo: 6')
                                     div.col-lg-4.portfolioImg
-                                        img(ng-src='data:image/png;base64,{{element.image}}', height='400px', width='400px').img-responsive
+                                        img(ng-src='{{element.image}}').img-responsive
         div.map.container-fluid(style="background-color: black; margin:0; padding:0")
             hr
             h1.text-center(style="color:white ") Мы на карте!

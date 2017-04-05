@@ -1,0 +1,9 @@
+#grid-gallery{
+    background-color: #0b0b0b;
+    margin-top: 50px;
+
+}
+
+.grid li img{
+    border: 1px solid white;
+}

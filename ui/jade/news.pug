@@ -1,0 +1,22 @@
+html(ng-app="page")
+    head
+        include head
+    body
+        include menu
+    div(ng-controller="postsCtrl")
+        div.container-fluid
+            div#content.row
+                div(ng-repeat="element in newsArray  |  limitTo: itemsPerPage")
+                    div.col-lg-4.new
+                        h3 {{element.title}}
+                        img.img-responsive(ng-src="{{element.image}}")
+                        p#newsText {{element.text}}
+
+
+    div#pagination.row
+        button.pull-left.btn.btn-primary.btn-sm(ng-disabled='firstPage()', ng-click='pageBack()') Назад
+        span {{currentPage+1}} из {{numberOfPages()}}
+        button.pull-right.btn.btn-primary.btn-sm(ng-disabled='lastPage()', ng-click='pageForward()') Вперед
+
+
+    include footer
