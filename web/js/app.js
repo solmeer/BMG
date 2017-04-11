@@ -25,7 +25,10 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider,$loca
             redirectTo: '/'
         }
     );
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 }]);
 
 app.controller('CarouselDemoCtrl', function ($scope,$http) {
