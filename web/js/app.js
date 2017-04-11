@@ -5,7 +5,7 @@ var folder = document.location.pathname.split('/')[1];
 
 var path = origin + "/" + folder + "views/";
 
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
     $routeProvider.when('/', {
             templateUrl: path + 'index.html',
             controller: 'CarouselDemoCtrl'
@@ -25,6 +25,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/'
         }
     );
+    $locationProvider.html5Mode(true);
 }]);
 
 app.controller('CarouselDemoCtrl', function ($scope,$http) {
