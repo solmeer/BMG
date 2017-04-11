@@ -3,6 +3,7 @@
 namespace AppBundle\Api\Controller;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -40,4 +41,33 @@ class TatooController extends Controller
         return $response;
     }
 
+
+    /**
+     * @Route("/test_thumb", name="thumb")
+     * @Template("default/thumb.html.twig")
+     */
+    public function testThumbAction()
+    {
+//        $filesystem = $this->get('knp_gaufrette.filesystem_map')->get('tattoo_images');
+//        $file = $filesystem->get('RaKjgsgbW3k.jpg');
+
+        /*
+         * Note the use of the dump() function.
+         * If you don't have the VarDumperComponent installed, use var_dump().
+         * @see http://symfony.com/doc/current/components/var_dumper/introduction.html
+         */
+//        dump($file);die;
+
+        /*$image = 'https://s3-'.
+            $this->getParameter('aws_region').
+            '.amazonaws.com/'.
+            $this->getParameter('aws_bucket').
+            '/tattoo_photos/RaKjgsgbW3k.jpg';*/
+
+        $image = '4mK0XV1qCTg.jpg';
+
+        return [
+            'image' => $image
+        ];
+    }
 }

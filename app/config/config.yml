@@ -174,7 +174,7 @@ knp_gaufrette:
         article:
             aws_s3:
                 service_id: 'aws.s3'
-                bucket_name: 'bmgtattoo-bucket'
+                bucket_name: '%aws_bucket%'
                 options:
                     create: true
                     directory: article_photos
@@ -182,7 +182,7 @@ knp_gaufrette:
         tattoo:
             aws_s3:
                 service_id: 'aws.s3'
-                bucket_name: 'bmgtattoo-bucket'
+                bucket_name: '%aws_bucket%'
                 options:
                     create : true
                     directory: tattoo_photos
@@ -190,7 +190,7 @@ knp_gaufrette:
         esquisse:
             aws_s3:
                 service_id: 'aws.s3'
-                bucket_name: 'bmgtattoo-bucket'
+                bucket_name: '%aws_bucket%'
                 options:
                     create : true
                     directory: esquisse_photos
@@ -204,6 +204,34 @@ knp_gaufrette:
 
         esquisse_images:
                 adapter: esquisse
+
+liip_imagine:
+    loaders:
+        tattoo_images_loader:
+            stream:
+                wrapper: gaufrette://tattoo_images/
+    resolvers:
+         cache_resolver_aws_s3:
+            aws_s3:
+                client_config:
+                    credentials:
+                        key:    '%aws_key%'
+                        secret: '%aws_secret_key%'
+                    region: '%aws_region%'
+                    version: latest
+                bucket: '%aws_bucket%'
+                get_options:
+                    Scheme: 'https'
+                put_options:
+                    CacheControl: 'max-age=86400'
+    filter_sets:
+        small_thumb:
+            data_loader: tattoo_images_loader
+            cache: cache_resolver_aws_s3
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 150], mode: outbound }
+
 aws:
     version: latest
     region: '%aws_region%'

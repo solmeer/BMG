@@ -12,3 +12,6 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
     schemes: [https]
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
