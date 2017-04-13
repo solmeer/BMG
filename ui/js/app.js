@@ -21,11 +21,25 @@ app.controller('CarouselDemoCtrl', function ($scope,$http) {
 
 });
 
+app.filter('startFrom', function(){
+    return function(input, start){
+        start = +start;
+        return input.slice(start);
+    }
+});
+
 app.controller("getNews", function ($scope, $http) {
     $http.get("http://bmgt.herokuapp.com/api/articles/")
         .then(function(response){
             $scope.newsArray = response.data;
 
+        });
+});
+
+app.controller("getNewsByID", function ($scope, $http, $routeParams) {
+    $http.get("api/articles/"+$routeParams.id)
+        .then(function(response){
+            $scope.article = response.data;
         });
 });
 
@@ -39,13 +53,6 @@ app.controller("portfolioCtrl", function ($scope,$http) {
         "background-color" : "black",
         "height":"auto"
     };
-});
-
-app.filter('startFrom', function(){
-    return function(input, start){
-        start = +start;
-        return input.slice(start);
-    }
 });
 
 app.controller("postsCtrl", function ($scope, $http) {
@@ -77,14 +84,6 @@ app.controller("postsCtrl", function ($scope, $http) {
             }
         })
 });
-
-app.controller("getNewsByID", function ($scope, $http, $routeParams) {
-    $http.get("api/articles/"+$routeParams.id)
-        .then(function(response){
-            $scope.article = response.data;
-        });
-});
-
 
 var origin = document.location.origin;
 var folder = document.location.pathname.split('/')[1];
