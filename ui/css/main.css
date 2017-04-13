@@ -19,9 +19,9 @@
     padding: 0;
 }
 
-@media screen and (max-height: 600px){
+@media screen and (max-width: 800px){
     .aboutContentText {
-        font-size: 15px;
+        font-size: 12px;
     }
 }
 
@@ -45,7 +45,7 @@
 
 .portfolioImg img{
     width: 500px;
-    height: 250px;
+    height: 500px;
 }
 
 .footer-img img:hover{

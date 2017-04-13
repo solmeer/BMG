@@ -7,11 +7,6 @@ app.controller('CarouselDemoCtrl', function ($scope,$http) {
     var slides = $scope.slides = [];
     var currIndex = 0;
 
-
-
-
-
-
     $scope.addSlide = function() {
         slides.push({
             image: '../img/header' + i + '.jpg',
@@ -19,12 +14,9 @@ app.controller('CarouselDemoCtrl', function ($scope,$http) {
         });
     };
 
-    for (var i = 1; i < 4; i++) {
+    for (var i = 1; i < 5; i++) {
         $scope.addSlide();
     }
-
-    $scope.start = slides.length - 1;
-    $scope.countOfImg = 6;
 
 
 });
@@ -34,21 +26,13 @@ app.controller("getNews", function ($scope, $http) {
         .then(function(response){
             $scope.newsArray = response.data;
 
-
         });
-
-
-
-
-
 });
 
 app.controller("portfolioCtrl", function ($scope,$http) {
-    $http.get("http://bmgt.herokuapp.com/api/articles/")
+    $http.get("http://bmgt.herokuapp.com/api/tattoo/")
         .then(function(response){
             $scope.newsArray = response.data;
-
-
         });
 
     $scope.ngPortfolio = {
@@ -57,12 +41,60 @@ app.controller("portfolioCtrl", function ($scope,$http) {
     };
 });
 
+app.filter('startFrom', function(){
+    return function(input, start){
+        start = +start;
+        return input.slice(start);
+    }
+});
+
+app.controller("postsCtrl", function ($scope, $http) {
+    $http.get("http://bmgt.herokuapp.com/api/articles/")
+        .then(function(response) {
+            $scope.newsArray = response.data;
+
+            $scope.currentPage = 0;
+            $scope.itemsPerPage = 8;
+
+            $scope.firstPage = function () {
+                return $scope.currentPage == 0;
+            };
+            $scope.lastPage = function () {
+                var lastPageNum = Math.ceil($scope.newsArray.length / $scope.itemsPerPage - 1);
+                return $scope.currentPage == lastPageNum;
+            };
+            $scope.numberOfPages = function () {
+                return Math.ceil($scope.newsArray.length / $scope.itemsPerPage);
+            };
+            $scope.startingItem = function () {
+                return $scope.currentPage * $scope.itemsPerPage;
+            };
+            $scope.pageBack = function () {
+                $scope.currentPage = $scope.currentPage - 1;
+            };
+            $scope.pageForward = function () {
+                $scope.currentPage = $scope.currentPage + 1;
+            }
+        })
+});
+
+app.controller("getNewsByID", function ($scope, $http, $routeParams) {
+    $http.get("api/articles/"+$routeParams.id)
+        .then(function(response){
+            $scope.article = response.data;
+        });
+});
+
+
 var origin = document.location.origin;
 var folder = document.location.pathname.split('/')[1];
 
-var path = origin + "/" + folder + "/ui/" + "views/";
+var path = origin + "/" + folder + "views/";
 
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
+
+    $locationProvider.html5Mode(true);
+
     $routeProvider.when('/', {
             templateUrl: path + 'index.html',
             controller: 'CarouselDemoCtrl'
@@ -70,10 +102,20 @@ app.config(['$routeProvider', function ($routeProvider) {
     ).when('/about',{
             templateUrl: path + 'about.html'
         }
+    ).when('/news',{
+            controller: 'getNews',
+            templateUrl: path + 'news.html'
+        }
+    ).when('/news/:id', {
+            templateUrl: path + 'show.html',
+            controller: 'getNewsByID'
+        }
+    ).when('/portfolio',{
+            templateUrl: path + 'portfolio.html'
+        }
     ).otherwise(
         {
             redirectTo: '/'
         }
     );
 }]);
-

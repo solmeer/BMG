@@ -1,18 +1,24 @@
+
 block menu
+
+
 nav#mainNav.navbar.navbar-default.navbar-fixed-top
     div.container-fluid
         div.navbar-header
-            a.navbar-brand(href='index.html')
+            a.navbar-brand(href='/')
                 | BMGT
         div#navigation.collapse.navbar-collapse
             ul.nav.navbar-nav
                 li
-                    a.page-scroll(href='#') Студия
+                    a.page-scroll(href='/') Главная
                 li
-                    a.page-scroll(href='portfolio.html') Портфолио
+                    a.page-scroll(href='/portfolio') Портфолио
                 li
-                    a.page-scroll(href='news.html') Новости
+                    a.page-scroll(href='/sketch') Эскизы
                 li
-                    a.page-scroll(href='') Акции
+                    a.page-scroll(href='/news') Новости
                 li
-                    a.page-scroll(href='about.html') О нас
+                    a.page-scroll(href='/about') О нас
+
+
+div(ng-view)

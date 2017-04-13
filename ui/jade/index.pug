@@ -6,16 +6,16 @@ html(ng-app="app")
         include menu.pug
         block menu
             div.container-fluid(, style='height: 100%; position: relative')
-                div.row
+                div(style='padding-top: 30px').row
                     div(uib-carousel='', active='active', interval='myInterval', no-wrap='noWrapSlides')
                         div(uib-slide='', ng-repeat='slide in slides track by slide.id', index='slide.id')
                             img(ng-src='{{slide.image}}', style='width: 100vw;height: 100vh ;')
 
             div.bg-dark.container-fluid
                 div.row(style='padding: 0;margin: 0')
-                    div.col-lg-3.col-sm-3.col-xs-3.col-md-3(style='height: inherit')
+                    div.col-lg-3.col-sm-5.col-xs-5.col-md-5(style='height: inherit')
                         img.img-responsive(src='../img/machine.png', style='margin-top:8vh')
-                    div.text-center.aboutContentText.center-block.col-lg-9.col-sm-9.col-xs-9.col-md-9.text-justify
+                    div.text-center.aboutContentText.center-block.col-lg-9.col-sm-7.col-xs-7.col-md-7.text-justify
                         | Татуировки - это наш конек! Black Mark Gang Tattoo - это развивающийся, комфортабельный тату салон в Черкассах. Главной целью салона является предоставление высококлассного, квалифицированного обслуживания в уютной и доброжелательной атмосфере салона. Мы перевернём ваше представление о татуировках, воплотив ваши идеи и мечты в реальность - новое украшение никогда вам не надоест.
 
 
@@ -35,4 +35,5 @@ html(ng-app="app")
 
         include footer
         block footer
+        div(ng-view)
 
