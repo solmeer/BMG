@@ -2,6 +2,7 @@
 
 namespace AppBundle\Api\Controller;
 
+use AppBundle\Entity\Article;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -41,4 +42,22 @@ class ArticleController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/{id}", name="articles_show", requirements={"id": "\d+"})
+     * @Method("GET")
+     */
+    public function showAction(Article $article)
+    {
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $normalizer = new PropertyNormalizer($classMetadataFactory);
+        $serializer = new Serializer([$normalizer]);
+
+        $article = $serializer->normalize($article, null, array('groups' => array('group1')));
+
+        $response = new Response(json_encode($article));
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+
+        return $response;
+    }
 }

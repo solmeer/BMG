@@ -41,33 +41,55 @@ class TatooController extends Controller
         return $response;
     }
 
-
     /**
-     * @Route("/test_thumb", name="thumb")
-     * @Template("default/thumb.html.twig")
+     * @Route("/latest", name="tatoo_index_latest")
+     * @Method("GET")
      */
-    public function testThumbAction()
+    public function indexLatestAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $normalizer = new PropertyNormalizer($classMetadataFactory);
+        $serializer = new Serializer([$normalizer]);
+
+        $tatoos = $em->getRepository('AppBundle:Tattoo')->getLastTattoos();
+        $tatoos = $serializer->normalize($tatoos, null, array('groups' => array('group1')));
+
+        $response = new Response(json_encode($tatoos));
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+
+        return $response;
+    }
+
+
+//    /**
+//     * @Route("/test_thumb", name="thumb")
+//     * @Template("default/thumb.html.twig")
+//     */
+//    public function testThumbAction()
+//    {
 //        $filesystem = $this->get('knp_gaufrette.filesystem_map')->get('tattoo_images');
 //        $file = $filesystem->get('RaKjgsgbW3k.jpg');
-
-        /*
-         * Note the use of the dump() function.
-         * If you don't have the VarDumperComponent installed, use var_dump().
-         * @see http://symfony.com/doc/current/components/var_dumper/introduction.html
-         */
+//
+//        /*
+//         * Note the use of the dump() function.
+//         * If you don't have the VarDumperComponent installed, use var_dump().
+//         * @see http://symfony.com/doc/current/components/var_dumper/introduction.html
+//         */
 //        dump($file);die;
-
-        /*$image = 'https://s3-'.
-            $this->getParameter('aws_region').
-            '.amazonaws.com/'.
-            $this->getParameter('aws_bucket').
-            '/tattoo_photos/RaKjgsgbW3k.jpg';*/
-
-        $image = '4mK0XV1qCTg.jpg';
-
-        return [
-            'image' => $image
-        ];
-    }
+//
+//        $image = 'https://s3-'.
+//            $this->getParameter('aws_region').
+//            '.amazonaws.com/'.
+//            $this->getParameter('aws_bucket').
+//            '/tattoo_photos/RaKjgsgbW3k.jpg';
+//
+//        $image = '4mK0XV1qCTg.jpg';
+//
+//        return [
+//            'image' => $image
+//        ];
+//    }
 }

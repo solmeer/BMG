@@ -133,7 +133,7 @@ class Person
     }
 
     /**
-     * Remove done tattoo
+     * Remove tattoo
      *
      * @param \AppBundle\Entity\Tattoo $tattoo
      */
@@ -143,7 +143,7 @@ class Person
     }
 
     /**
-     * Get done_tattoos
+     * Get tattoos
      *
      * @return \Doctrine\Common\Collections\Collection
      */

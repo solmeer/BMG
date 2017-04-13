@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class TattooRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLastTattoos() {
+        return $this->getEntityManager()
+            ->createQuery('SELECT tattoo FROM AppBundle:Tattoo tattoo ORDER BY tattoo.id DESC')
+            ->setMaxResults(6)
+            ->getResult();
+    }
+
 }

@@ -7,7 +7,7 @@ var path = origin + "/" + folder + "views/";
 
 app.config(['$routeProvider','$locationProvider', function ($routeProvider,$locationProvider) {
 
-    $locationProvider.html5Mode(true).hashPrefix('!');
+    $locationProvider.html5Mode(true);
 
     $routeProvider.when('/', {
             templateUrl: path + 'index.html',
@@ -19,6 +19,10 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider,$loca
     ).when('/news',{
             controller: 'getNews',
             templateUrl: path + 'news.html'
+        }
+    ).when('/news/:id', {
+        templateUrl: path + 'show.html',
+        controller: 'getNewsByID'
         }
     ).when('/portfolio',{
             templateUrl: path + 'portfolio.html'
@@ -56,6 +60,13 @@ app.controller("getNews", function ($scope, $http) {
     $http.get("api/articles/")
         .then(function(response){
             $scope.newsArray = response.data;
+        });
+});
+
+app.controller("getNewsByID", function ($scope, $http, $routeParams) {
+    $http.get("api/articles/" + $routeParams.id)
+        .then(function(response){
+            $scope.article = response.data;
         });
 });
 

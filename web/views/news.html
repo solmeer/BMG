@@ -48,10 +48,12 @@
     <div class="container-fluid">
       <div class="row" id="content">
         <div ng-repeat="element in newsArray  |  limitTo: itemsPerPage">
-          <div class="col-lg-4 new">
-            <h3>{{element.title}}</h3><img class="img-responsive" ng-src="{{element.image}}"/>
-            <p id="newsText">{{element.text}}</p>
-          </div>
+          <a href="news/{{element.id}}">
+            <div class="col-lg-4 new">
+              <h3>{{element.title}}</h3><img class="img-responsive" ng-src="{{element.image}}"/>
+              <p id="newsText">{{element.text}}</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>

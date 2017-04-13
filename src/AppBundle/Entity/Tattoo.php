@@ -56,7 +56,7 @@ class Tattoo
     private $imageFile;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="done_tattoos")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person" ,inversedBy="tattoos")
      * @ORM\JoinColumn(name="author_id",referencedColumnName="id")
      */
     private $author;
