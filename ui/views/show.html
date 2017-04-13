@@ -28,7 +28,7 @@
     <script src="../js/portfolio/cbpGridGallery.js"></script>
     <script src="../js/paginator.js"></script>
   </head>
-  <body ng-controller="postsCtrl">
+  <body>
     <nav class="navbar navbar-default navbar-fixed-top" id="mainNav">
       <div class="container-fluid">
         <div class="navbar-header"><a class="navbar-brand" href="/">BMGT</a></div>
@@ -44,32 +44,25 @@
       </div>
     </nav>
     <div ng-view="ng-view"></div>
-  </body>
-  <div>
-    <div class="container-fluid">
-      <div class="row" id="content">
-        <div ng-repeat="element in newsArray  | startFrom: startingItem() | limitTo: itemsPerPage"><a href="/news/{{element.id}}">
-            <div class="col-lg-3 new col-md-6 col-sm-4 col-xs-6">
-              <h2>{{element.title}}</h2><img class="img-responsive" ng-src="{{element.image}}"/>
-              <p id="newsText">{{element.text}}</p>
-            </div></a></div>
-      </div>
-    </div>
-  </div>
-  <div class="row" id="pagination">
-    <button class="btn btn-primary btn-sm" ng-disabled="firstPage()" ng-click="pageBack()">Назад</button><span>{{currentPage+1}} из {{numberOfPages()}}</span>
-    <button class="btn btn-primary btn-sm" ng-disabled="lastPage()" ng-click="pageForward()">Вперед</button>
-  </div>
-  <section id="contact">
-    <div class="container">
-      <hr/>
-      <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img class="img-responsive" src="../img/ico/phone.png"/></div>
-        <div class="col-lg-2 col-md-5 col-sm-6 col-xs-6">
-          <p>(063)040-06-87<br/>  (063)153-25-98</p>
+    <div class="container" ng-controller="getNewsByID">
+      <div class="row" style="padding-top:60px; min-height:80%;">
+        <div style="float:left; color:white; font-family: Cleo;"><img class="img-responsive" ng-src="{{article.image}}" width="400px" height="400px" style="float:left; margin: 35px;"/>
+          <h1 class="text-center">{{article.title}}</h1>
+          <p class="text-justify">{{article.text}}</p>
         </div>
-        <div class="col-lg-3 col-lg-offset-6 col-md-4 col-sm-3 col-xs-3 footer-img"><a href="https://vk.com/bmgtattoo" target="_blank"><img class="img-responsive" src="../img/ico/vk.png" style="float:right; margin-left:20px;"/></a><a href="https://www.instagram.com/bogdan_lutsenko/" target="_blank"><img class="img-responsive" src="../img/ico/instagram.png" style="float:right;"/></a></div>
       </div>
     </div>
-  </section>
+    <section id="contact">
+      <div class="container">
+        <hr/>
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><img class="img-responsive" src="../img/ico/phone.png"/></div>
+          <div class="col-lg-2 col-md-5 col-sm-6 col-xs-6">
+            <p>(063)040-06-87<br/>  (063)153-25-98</p>
+          </div>
+          <div class="col-lg-3 col-lg-offset-6 col-md-4 col-sm-3 col-xs-3 footer-img"><a href="https://vk.com/bmgtattoo" target="_blank"><img class="img-responsive" src="../img/ico/vk.png" style="float:right; margin-left:20px;"/></a><a href="https://www.instagram.com/bogdan_lutsenko/" target="_blank"><img class="img-responsive" src="../img/ico/instagram.png" style="float:right;"/></a></div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

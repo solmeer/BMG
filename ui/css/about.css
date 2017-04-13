@@ -23,3 +23,9 @@
     font-family: Cleo;
     font-size: 24px;
 }
+
+@media screen and (max-width: 875px){
+    .aboutText {
+        font-size: 17px;
+    }
+}

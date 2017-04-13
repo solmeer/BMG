@@ -1,0 +1,12 @@
+html(ng-app="app")
+    head
+        include head
+    body
+        include menu
+        div.container(ng-controller="getNewsByID")
+            div.row(style="padding-top:60px; min-height:80%")
+                div(style="float:left; color:white; font-family: Cleo;")
+                    img.img-responsive(ng-src="{{article.image}}" width="400px" height="400px" style="float:left; margin: 35px")
+                    h1.text-center {{article.title}}
+                    p.text-justify {{article.text}}
+        include footer
